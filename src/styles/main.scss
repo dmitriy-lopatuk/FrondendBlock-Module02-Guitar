@@ -100,6 +100,7 @@ a {
     }
   }
   .link-underline {
+    color: $light;
     margin: 6px 0 0;
   }
 }
@@ -114,7 +115,6 @@ a {
 
 .banner {
   display: flex;
-  // background-color: rgb(131, 112, 156);
   background-image: url('../images/bg-banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -127,9 +127,6 @@ a {
     flex-basis: 61%;
   }
   &__info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     flex-basis: calc(39% - 50px);
   }
   &__item {
@@ -137,27 +134,48 @@ a {
     flex-direction: column;
     justify-content: end;
     position: relative;
+    z-index: 1;
     height: 151px;
     border: 1px solid $light;
     border-right: none;
     border-radius: 20px 0 0 20px;
     padding: 45px 30px 30px;
     margin-right: 80px;
-    &:after {
+    transition: $tr;
+    &:hover {
+      &:before {
+        width: 100%;
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+      .banner__decor {
+        background-color: $accent;
+        border-color: $accent;
+        &:after {
+          opacity: 1;
+          transform: translate(0, 0) scale(1);
+        }
+      }
+    }
+    & + & {
+      margin-top: 19px;
+    }
+    &:before {
       content: "";
       display: block;
-      position: absolute;
-      top: 0;
-      right: -80px;
-      width: 80px;
+      width: 0;
       height: 151px;
-      background-image: url('../images/banner-info-decor.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
-    &._active {
       background-color: $accent;
-      border: none;
+      border: 1px solid $accent;
+      border-radius: 20px 0 0 20px;
+      position: absolute;
+      top: -1px;
+      right: 1px;
+      z-index: -1;
+      opacity: 0;
+      // transform: translateX(50%) scale(0);
+      transform: scale(0);
+      transition: $tr;
     }
   }
   &__text {
@@ -165,13 +183,13 @@ a {
     font-weight: 200;
     font-size: 24px;
     line-height: 110%;
-  }
-  &__date {
-    display: block;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 110%;
-    padding-top: 15px;
+    span {
+      display: block;
+      font-weight: 700;
+      font-size: 32px;
+      // line-height: 110%;
+      margin-top: 20px;
+    }
   }
   &__decor {
     display: flex;
@@ -184,6 +202,35 @@ a {
     position: absolute;
     top: 0;
     right: -80px;
+    transition: $tr;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: 0;
+      width: 80px;
+      height: 151px;
+      background-image: url('../images/banner-info-decor.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: 0;
+      width: 80px;
+      height: 151px;
+      // transform: translate(-50%, 0) scale(0);
+      transform: scale(0);
+      background-image: url('../images/banner-info-decor-primary.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      transition: $tr;
+    }
   }
   &__title {
     font-size: 64px;
