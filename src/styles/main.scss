@@ -125,6 +125,9 @@ a {
   gap: 50px;
   &__main {
     flex-basis: 61%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   &__info {
     flex-basis: calc(39% - 50px);
@@ -146,14 +149,14 @@ a {
       &:before {
         width: 100%;
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: scale(1);
       }
       .banner__decor {
         background-color: $accent;
         border-color: $accent;
         &:after {
           opacity: 1;
-          transform: translate(0, 0) scale(1);
+          transform: scale(1);
         }
       }
     }
@@ -173,8 +176,10 @@ a {
       right: 1px;
       z-index: -1;
       opacity: 0;
-      // transform: translateX(50%) scale(0);
+      // transform: translateX(50%) scale(0); // Вариант Анны Блок
+      // transform: translate(50%, -50%) scale(0); // Мой вариант
       transform: scale(0);
+      transform-origin: top right;
       transition: $tr;
     }
   }
@@ -223,8 +228,10 @@ a {
       right: 0;
       width: 80px;
       height: 151px;
-      // transform: translate(-50%, 0) scale(0);
+      // transform: translate(-50%, 0) scale(0); // Вариант Анны Блок
+      // transform: translate(-50%, -50%) scale(0); // Мой вариант
       transform: scale(0);
+      transform-origin: top left;
       background-image: url('../images/banner-info-decor-primary.svg');
       background-repeat: no-repeat;
       background-size: contain;
