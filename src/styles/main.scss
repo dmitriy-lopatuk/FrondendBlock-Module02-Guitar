@@ -1,5 +1,4 @@
 @use 'font';
-@import 'normalize.css';
 
 *,
 *:before,
@@ -12,6 +11,7 @@ body {
   font-weight: 400;
   background-color: #1f2023;
   color: $light;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,6 +20,14 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   text-decoration: none;
+}
+
+.title-h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 110%;
+  letter-spacing: 1.6;
+  text-transform: uppercase;
 }
 
 .header {
@@ -293,5 +301,78 @@ a {
       top: -68px;
       right: -20px;
     }
+  }
+}
+
+.tag {
+  display: flex;
+  gap: 64px;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  animation: move-left 20s infinite linear alternate;
+  &:hover {
+    animation-play-state: paused;
+  }
+  &__text {
+    margin: 0;
+    border: 1px solid $grey;
+    border-radius: 50px;
+    padding: 10px 20px;
+
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 110%;
+    color: $grey;
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: -40px;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background-color: $accent;
+      border-radius: 50%;
+    }
+    &:last-child:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -42px;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background-color: $accent;
+      border-radius: 50%;
+    }
+  }
+}
+
+@keyframes move-left {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.course {
+  display: flex;
+  gap: 70px;
+  &__title {
+    flex-basis: 395px;
+  }
+  &__content {
+    flex-basis: calc(100% - 395px - 70px);
+  }
+}
+
+.slider-teacher {
+  &__item {
+    background-color: $dark;
   }
 }
