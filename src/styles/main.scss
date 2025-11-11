@@ -584,3 +584,68 @@ a {
     letter-spacing: -0.005em;
   }
 }
+
+.result {
+  margin-bottom: 150px;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+  }
+  &__item {
+    background-color: $light;
+    padding: 30px;
+    border-radius: $br-min;
+    &._subgrid {
+      grid-column: 2 / 5;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-template-rows: 130px;
+      align-items: center;
+    }
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: $dark;
+    font-size: 16px;
+    line-height: 150%;
+    margin: 0;
+    span {
+      width: fit-content;
+      padding: 10px;
+      background-color: $accent;
+      border-radius: 10px;
+
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 110%;
+      color: $light;
+    }
+  }
+  &__btn {
+    grid-column: 2 / 4;
+    align-self: stretch;
+    background-color: $accent;
+    border: 1px solid $accent;
+    border-radius: $br-min;
+    padding: 30px;
+    cursor: pointer;
+  
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $light;
+    transition: $tr;
+    
+    @media (hover: hover) {
+      &:hover {
+        color: $accent;
+        background-color: transparent;
+      }
+    }
+  }
+}
