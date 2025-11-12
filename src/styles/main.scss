@@ -586,6 +586,7 @@ a {
 }
 
 .result {
+  margin-top: 150px;
   margin-bottom: 150px;
   &__list {
     display: grid;
@@ -645,6 +646,94 @@ a {
       &:hover {
         color: $accent;
         background-color: transparent;
+      }
+    }
+  }
+}
+
+.areas {
+  margin-top: 150px;
+  margin-bottom: 150px;
+  &__wrapper {
+    margin-top: 50px;
+  }
+  &__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    color: $light;
+    position: relative;
+    background: transparent;
+    border-radius: 0;
+    font-size: 32px;
+    line-height: 150%;
+    &:not(:last-child) {
+      border-bottom: 1px solid $accent;
+      margin-bottom: 30px;
+    }
+    &:hover {
+      background: $accent;
+      border-radius: 10px;
+      &:after {
+        transform: rotate(45deg);
+      }
+      &:before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    &:after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 48px;
+      background-image: url('../images/ui/arrow-rotate.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      transition: $tr;
+    }
+    &:before {
+      content: "";
+      display: block;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      left: 770px;
+      opacity: 0;
+      transform: scale(0);
+      transition: $tr;
+    }
+    &._acoustic {
+      &:before {
+        width: 568px;
+        height: 314px;
+        background-image: url('../images/areas/acoustic.png');
+        top: calc(50% - 170px);
+      }
+    }
+    &._drums {
+      &:before {
+        width: 474px;
+        height: 474px;
+        background-image: url('../images/areas/drums.png');
+        top: calc(50% - 237px);
+      }
+    }
+    &._violin {
+      &:before {
+        width: 568px;
+        height: 528px;
+        background-image: url('../images/areas/violin.png');
+        top: calc(50% - 264px);
+      }
+    }
+    &._bas-guitar {
+      &:before {
+        width: 586px;
+        height: 394px;
+        background-image: url('../images/areas/bas-guitar.png');
+        top: calc(50% - 197px);
       }
     }
   }
