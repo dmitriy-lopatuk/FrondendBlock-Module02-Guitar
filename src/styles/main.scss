@@ -57,6 +57,9 @@ a {
     padding: 17px 45px 0 45px;
     border-radius: 10px 0 0 0;
     position: relative;
+    @media (max-width: $r_desk) {
+      padding: 17px 20px 0 20px;
+    }
     &::before {
       content: "";
       width: 27px;
@@ -79,18 +82,13 @@ a {
       right: -68px;
     }
   }
-  &__link {
-    color: $light;
-    background-color: $accent;
-    font-size: 20px;
+  &__info {
     padding: 17px 45px 0 45px;
+    background-color: $accent;
     border-radius: 0 10px 0 0;
     position: relative;
-    &:hover {
-      color: $grey;
-      .link-underline {
-        color: $grey;
-      }
+    @media (max-width: $r_desk) {
+      padding: 17px 20px 0 20px;
     }
     &::before {
       content: "";
@@ -114,9 +112,32 @@ a {
       bottom: -24px;
     }
   }
-  .link-underline {
+  &__link {
     color: $light;
-    margin: 6px 0 0;
+    font-size: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $light;
+    transition: $tr;
+    @media (hover: hover) {
+      &:hover {
+        border-bottom: 1px solid $accent;
+      }
+    }
+  }
+}
+
+.logo {
+  &._max {
+    svg {
+      width: 400px;
+      height: 31px;
+    }
+  }
+  &._min {
+    svg {
+      width: 296px;
+      height: 28px;
+    }
   }
 }
 
@@ -124,8 +145,13 @@ a {
   width: 100%;
   max-width: 1830px;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 45px;
+  padding-right: 45px;
+  box-sizing: border-box;
+  @media (max-width: $r_desk) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .banner {
@@ -160,18 +186,20 @@ a {
     padding: 45px 30px 30px;
     margin-right: 80px;
     transition: $tr;
-    &:hover {
-      &:before {
-        width: 100%;
-        opacity: 1;
-        transform: scale(1);
-      }
-      .banner__decor {
-        background-color: $accent;
-        border-color: $accent;
-        &:after {
+    @media (hover: hover) {
+      &:hover {
+        &:before {
+          width: 100%;
           opacity: 1;
           transform: scale(1);
+        }
+        .banner__decor {
+          background-color: $accent;
+          border-color: $accent;
+          &:after {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
       }
     }
@@ -317,8 +345,10 @@ a {
   margin-top: 150px;
   margin-bottom: 150px;
   animation: move-left 20s infinite linear alternate;
-  &:hover {
-    animation-play-state: paused;
+  @media (hover: hover) {
+    &:hover {
+      animation-play-state: paused;
+    }
   }
   &__text {
     margin: 0;
@@ -398,9 +428,11 @@ a {
     position: inherit;
     right: inherit;
     left: inherit;
-    &:hover {
-      background-color: $accent;
-      border: 1px solid $accent;
+    @media (hover: hover) {
+      &:hover {
+        background-color: $accent;
+        border: 1px solid $accent;
+      }
     }
     &:after {
       content: "";
@@ -437,19 +469,21 @@ a {
     border-radius: $br-max;
     overflow: hidden;
     transition: $tr;
-    &:hover {
-      border-color: $accent;
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(42.13deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 59.08%) no-repeat;
-      }
-      .slider-teacher__name, .slider-teacher__grid {
-        opacity: 1;
+    @media (hover: hover) {
+      &:hover {
+        border-color: $accent;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(42.13deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 59.08%) no-repeat;
+        }
+        .slider-teacher__name, .slider-teacher__grid {
+          opacity: 1;
+        }
       }
     }
   }
@@ -672,15 +706,17 @@ a {
       border-bottom: 1px solid $accent;
       margin-bottom: 30px;
     }
-    &:hover {
-      background: $accent;
-      border-radius: 10px;
-      &:after {
-        transform: rotate(45deg);
-      }
-      &:before {
-        opacity: 1;
-        transform: scale(1);
+    @media (hover: hover) {
+      &:hover {
+        background: $accent;
+        border-radius: 10px;
+        &:after {
+          transform: rotate(45deg);
+        }
+        &:before {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
     }
     &:after {
@@ -734,6 +770,92 @@ a {
         height: 394px;
         background-image: url('../images/areas/bas-guitar.png');
         top: calc(50% - 197px);
+      }
+    }
+  }
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 10px 20px;
+  padding: 30px 50px;
+  margin-bottom: 30px;
+  background: $dark;
+  border-radius: $br-min;
+  &__text {
+    margin: 0;
+    & + & {
+      margin-top: 6px;
+    }
+  }
+  &__link {
+    font-weight: 700;
+    box-shadow: 0 4px 0 -3px $accent;
+    transition: $tr;
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0 4px 0 -3px transparent;
+      }
+    }
+  }
+  &__copy {
+    text-align: right;
+    align-self: end;
+  }
+}
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 11px;
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background-color: $light;
+    border-radius: 10px;
+    transition: $tr;
+    @media (hover: hover) {
+      &:hover {
+        background-color: $accent;
+        &:after {
+          background-color: $light;
+        }
+      }
+    }
+    &:after {
+      content: "";
+      display: block;
+      background-color: $accent;
+      mask: center center / 100% no-repeat;
+      -webkit-mask: center center / 100% no-repeat;
+      transition: $tr;
+    }
+    &._wa {
+      &:after {
+        width: 28px;
+        height: 28px;
+        mask-image: url('../images/social/wa.svg');
+        -webkit-mask-image: url('../images/social/wa.svg'); // Эта строка нужна для отображения иконок соц сетей на браузерах которые не поддерживают свойство mask-image
+      }
+    }
+    &._vk {
+      &:after {
+        width: 32px;
+        height: 19px;
+        mask-image: url('../images/social/vk.svg');
+        -webkit-mask-image: url('../images/social/vk.svg'); // Эта строка нужна для отображения иконок соц сетей на браузерах которые не поддерживают свойство mask-image
+      }
+    }
+    &._tg {
+      &:after {
+        width: 25px;
+        height: 22px;
+        mask-image: url('../images/social/tg.svg');
+        -webkit-mask-image: url('../images/social/tg.svg'); // Эта строка нужна для отображения иконок соц сетей на браузерах которые не поддерживают свойство mask-image
       }
     }
   }
